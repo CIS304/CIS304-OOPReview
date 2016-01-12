@@ -19,10 +19,11 @@ import finance.enums.CompoundingOption;
  * The summary report shall be provided by the generateReport method required by the ReportGenerator interface.
  * 
  * @author stephen b
- * @version160106
+ * @version 160106
  */
 public class LoanPayment extends TVMEngine implements ReportGenerator {
-
+    private final double purchaseAmount;
+    private final double downPayment;
     /**
      * The class constructor creates a LoanPayment object configured to
      * calculate a loan payment. The loan parameters are provided to the object
@@ -38,6 +39,11 @@ public class LoanPayment extends TVMEngine implements ReportGenerator {
                         double interestRate,
                         CompoundingOption compounding,
                         double loanDuration) {
+        super(loanDuration, interestRate, compounding, 0, 0, 0);
+        setPV(purchaseAmount - downPayment);
+        this.purchaseAmount = purchaseAmount;
+        this.downPayment = downPayment;
+        
         
     }
     
