@@ -5,7 +5,8 @@ package finance;
  * @author JAM
  * @version 150107
  */
-public interface ReportGenerator {
+public interface ReportGenerator 
+{
     
     /**
      * Generates a summary report for a selected financial calculation.
