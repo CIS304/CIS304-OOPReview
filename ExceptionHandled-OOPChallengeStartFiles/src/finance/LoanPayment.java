@@ -67,13 +67,12 @@ public class LoanPayment extends TVMEngine implements ReportGenerator {
         String compoundingStr = getCompounding().toString().toLowerCase();
         return "Loan Payment Summary"
                 + "\nPurchase Amount: " + toCurrency(purchaseAmount)
-                + "\nDown Payment: " + downPayment 
-                + "\nAmount Financed: " + null
+                + "\nDown Payment: " + toCurrency(downPayment)
+                + "\nAmount Financed: " + toCurrency(purchaseAmount-downPayment)
                 + "\nAPR: " + (interestRate*100)+"%"
                 + "\nCompounding: " + compoundingStr
-                + "\nLoan Duration (years): " + null
+                + "\nLoan Duration (years): " + loanDuration
                 + "\nPayment (annual): " + getValue();
-        
         
     }
     
