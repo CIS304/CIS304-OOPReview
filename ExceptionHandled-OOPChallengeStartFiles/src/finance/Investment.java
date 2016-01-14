@@ -9,19 +9,19 @@ import finance.ReportGenerator;
 import finance.TVMEngine;
 import finance.enums.CompoundingOption;
 
-/**
- *
- * @author steph
- */
+
 /** The Investment class calculates the future value of an investment after a specified number of years. 
  * It also provides a summary report of the investment parameters. 
  * This class inherits the TVMEngine class and implements the ReportGenerator interface. 
- * @author kevin
+ * @author Exception Handled
  * @version 160106 
  */
 
 public class Investment extends TVMEngine implements ReportGenerator{
-
+    private final double initialInvestment;
+    private final double periodicPayment;
+    private final double interestRate;
+    
 
 
 
@@ -41,8 +41,9 @@ public class Investment extends TVMEngine implements ReportGenerator{
                         CompoundingOption compounding,
                         double yearsInvested){
         super(yearsInvested, interestRate, compounding, initialInvestment,periodicPayment,0); 
-       
-        
+       this.initialInvestment = initialInvestment;
+       this.periodicPayment = periodicPayment;
+       this.interestRate = interestRate;
     }
     
     
@@ -63,7 +64,11 @@ public class Investment extends TVMEngine implements ReportGenerator{
      */
     @Override
     public String generateReport() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      return "Investment Value Summary"
+              + "\nInitial Investment: " + toCurrency(initialInvestment)
+              + "\nPeriodic Investment: " + toCurrency(periodicPayment)
+              + "\nAnnual Return: " + toCurrency(interestRate)
+              + "\nInvestment Value after 20 Years: " + getValue();
     }
     
 }
