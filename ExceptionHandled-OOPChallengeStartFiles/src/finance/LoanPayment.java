@@ -5,8 +5,6 @@
  */
 package finance;
 
-import finance.ReportGenerator;
-import finance.TVMEngine;
 import finance.enums.CompoundingOption;
 
 /**
@@ -61,7 +59,10 @@ public class LoanPayment extends TVMEngine implements ReportGenerator {
 
     @Override
     public String generateReport() {
-        return generateReport(); 
+        String compoundingStr = getCompounding().toString().toLowerCase();
+        return "Loan Payment Summary"
+                + "\nPurchase Amount: " + toCurrency(purchaseAmount)
+                + "\nDown Payment: " + downPayment;
     }
     
 }

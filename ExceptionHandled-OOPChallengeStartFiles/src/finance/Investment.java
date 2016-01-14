@@ -41,7 +41,7 @@ public class Investment extends TVMEngine implements ReportGenerator{
                         CompoundingOption compounding,
                         double yearsInvested){
         super(yearsInvested, interestRate, compounding, initialInvestment,periodicPayment,0); 
-        setFV(calcFV()); 
+       
         
     }
     
@@ -54,7 +54,7 @@ public class Investment extends TVMEngine implements ReportGenerator{
     
     @Override
     public String getValue() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return toCurrency(-calcFV()); 
     }
     /** 
      * Provides a text summary report of the investment. The report includes the initial investment amount, 
