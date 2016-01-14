@@ -22,6 +22,9 @@ import finance.enums.CompoundingOption;
 public class LoanPayment extends TVMEngine implements ReportGenerator {
     private final double purchaseAmount;
     private final double downPayment;
+    private final double interestRate; 
+    private final double loanDuration; 
+     
     /**
      * The class constructor creates a LoanPayment object configured to
      * calculate a loan payment. The loan parameters are provided to the object
@@ -41,6 +44,8 @@ public class LoanPayment extends TVMEngine implements ReportGenerator {
         setPV(purchaseAmount - downPayment);
         this.purchaseAmount = purchaseAmount;
         this.downPayment = downPayment;
+        this.interestRate = interestRate; 
+        this.loanDuration = loanDuration; 
         
         
     }
@@ -62,7 +67,14 @@ public class LoanPayment extends TVMEngine implements ReportGenerator {
         String compoundingStr = getCompounding().toString().toLowerCase();
         return "Loan Payment Summary"
                 + "\nPurchase Amount: " + toCurrency(purchaseAmount)
-                + "\nDown Payment: " + downPayment;
+                + "\nDown Payment: " + downPayment 
+                + "\nAmount Financed: " + null
+                + "\nAPR: " + (interestRate*100)+"%"
+                + "\nCompounding: " + compoundingStr
+                + "\nLoan Duration (years): " + null
+                + "\nPayment (annual): " + getValue();
+        
+        
     }
     
 }
