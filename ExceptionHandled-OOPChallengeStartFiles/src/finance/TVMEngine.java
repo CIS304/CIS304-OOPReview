@@ -53,8 +53,7 @@ import java.text.NumberFormat;
  * @author JAM
  * @version 160106
  */
-public abstract class TVMEngine 
-{
+public abstract class TVMEngine {
 
     private double annualRate;
     private double periodRate;
@@ -72,8 +71,7 @@ public abstract class TVMEngine
      * Creates a TVM engine object with the TVM registers cleared and
      * compounding set to annual.
      */
-    protected TVMEngine()
-    {
+    protected TVMEngine() {
         clearTVM();
         currency = NumberFormat.getCurrencyInstance();
     }
@@ -96,8 +94,7 @@ public abstract class TVMEngine
      */
     protected TVMEngine(double years, double annualRate,
             CompoundingOption compounding, double pv,
-            double pmt, double fv) 
-    {
+            double pmt, double fv) {
         this();
         this.years = years;
         propogateYearsChange();
@@ -114,8 +111,7 @@ public abstract class TVMEngine
      * Clears the TVM calculation parameters and sets compounding to annual
      *
      */
-    protected final void clearTVM() 
-    {
+    protected final void clearTVM() {
 
         // Set default compounding
         compounding = CompoundingOption.ANNUAL;
@@ -140,8 +136,7 @@ public abstract class TVMEngine
      * @param apr the interest rate or return specified as an annual percentage
      * rate (APR)
      */
-    protected void setAPR(double apr) 
-    {
+    protected void setAPR(double apr) {
         propogateAnnualRateChange(apr);
     }
 
@@ -150,8 +145,7 @@ public abstract class TVMEngine
      *
      * @param cOption the interest compounding interval
      */
-    protected void setCompounding(CompoundingOption cOption) 
-    {
+    protected void setCompounding(CompoundingOption cOption) {
         periodsPerYear = cOption.getPeriodsPerYear();
         compounding = cOption;
         changeCompounding();
@@ -162,8 +156,7 @@ public abstract class TVMEngine
      *
      * @param pv present value (standard cash flow sign convention applies)
      */
-    protected void setPV(double pv) 
-    {
+    protected void setPV(double pv) {
         this.pv = pv;
     }
 
@@ -173,8 +166,7 @@ public abstract class TVMEngine
      *
      * @param fv future value (standard cash flow sign convention applies)
      */
-    protected void setFV(double fv) 
-    {
+    protected void setFV(double fv) {
         this.fv = fv;
     }
 
@@ -183,8 +175,7 @@ public abstract class TVMEngine
      *
      * @param pmt payment (standard cash flow sign convention applies)
      */
-    protected void setPMT(double pmt) 
-    {
+    protected void setPMT(double pmt) {
         this.pmt = pmt;
     }
 
@@ -194,39 +185,32 @@ public abstract class TVMEngine
      *
      * @param years the number of years over which the TVM calculation applies
      */
-    protected void setYears(double years) 
-    {
+    protected void setYears(double years) {
         this.years = years;
         propogateYearsChange();
     }
 
-    protected double getPV() 
-    {
+    protected double getPV() {
         return pv;
     }
 
-    protected double getFV() 
-    {
+    protected double getFV() {
         return fv;
     }
 
-    protected double getPMT() 
-    {
+    protected double getPMT() {
         return pmt;
     }
 
-    protected double getAPR() 
-    {
+    protected double getAPR() {
         return annualRate * 100;
     }
 
-    protected double getYears() 
-    {
+    protected double getYears() {
         return years;
     }
 
-    protected CompoundingOption getCompounding() 
-    {
+    protected CompoundingOption getCompounding() {
         return compounding;
     }
 
@@ -235,8 +219,7 @@ public abstract class TVMEngine
      *
      * @return payment (standard cash flow sign convention applies)
      */
-    protected double calcPMT() 
-    {
+    protected double calcPMT() {
         pmt = (-pv - fv / df) * periodRate / (1 - 1 / df);
         return pmt;
     }
@@ -247,8 +230,7 @@ public abstract class TVMEngine
      *
      * @return future value (standard cash flow sign convention applies)
      */
-    protected double calcFV() 
-    {
+    protected double calcFV() {
         fv = (-pv - (pmt / periodRate) * (1 - 1 / df)) * df;
         return fv;
     }
@@ -262,8 +244,7 @@ public abstract class TVMEngine
      * currency of default locale (specified by the operating system) and
      * rounded to the decimal places used that currency.
      */
-    public String toCurrency(double number) 
-    {
+    public String toCurrency(double number) {
         BigDecimal bigNumber = BigDecimal.valueOf(number);
         BigDecimal roundedNumber = bigNumber.setScale(currency.getMaximumFractionDigits(),
                 RoundingMode.HALF_UP);
@@ -279,28 +260,24 @@ public abstract class TVMEngine
 
     ///////////////////////////////////////////
     //Private methods - NOT PART OF THE API!!!
-    private void propogateAnnualRateChange(double annualRate) 
-    {
+    private void propogateAnnualRateChange(double annualRate) {
         this.annualRate = annualRate / 100.0;
         periodRate = this.annualRate / periodsPerYear;
         df = calcDF();
     }
 
-    private void changeCompounding() 
-    {
+    private void changeCompounding() {
         periodRate = annualRate / periodsPerYear;
         periods = years * periodsPerYear;
         df = calcDF();
     }
 
-    private void propogateYearsChange() 
-    {
+    private void propogateYearsChange() {
         periods = years * periodsPerYear;
         df = calcDF();
     }
 
-    private double calcDF() 
-    {
+    private double calcDF() {
         return Math.pow(1 + periodRate, periods);
     }
 
