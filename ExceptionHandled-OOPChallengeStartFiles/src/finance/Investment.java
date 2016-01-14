@@ -64,9 +64,10 @@ public class Investment extends TVMEngine implements ReportGenerator{
      */
     @Override
     public String generateReport() {
+        String compoundingStr = getCompounding().toString().toLowerCase();
       return "Investment Value Summary"
               + "\nInitial Investment: " + toCurrency(initialInvestment)
-              + "\nPeriodic Investment: " + toCurrency(periodicPayment)
+              + "\nPeriodic Investment " + "(" + compoundingStr + "):"  + toCurrency(periodicPayment)
               + "\nAnnual Return: " + toCurrency(interestRate)
               + "\nInvestment Value after 20 Years: " + getValue();
     }

@@ -72,7 +72,7 @@ public class LoanPayment extends TVMEngine implements ReportGenerator {
                 + "\nAPR: " + (interestRate*100)+"%"
                 + "\nCompounding: " + compoundingStr
                 + "\nLoan Duration (years): " + loanDuration
-                + "\nPayment (annual): " + getValue();
+                + "\nPayment " +"(" + compoundingStr +"):" + getValue();
         
     }
     
