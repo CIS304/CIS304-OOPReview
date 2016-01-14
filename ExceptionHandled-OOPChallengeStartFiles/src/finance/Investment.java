@@ -40,6 +40,9 @@ public class Investment extends TVMEngine implements ReportGenerator{
                         double interestRate, 
                         CompoundingOption compounding,
                         double yearsInvested){
+        super(yearsInvested, interestRate, compounding, initialInvestment,periodicPayment,0); 
+        setFV(calcFV()); 
+        
     }
     
     
