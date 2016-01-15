@@ -61,6 +61,13 @@ public class LoanPayment extends TVMEngine implements ReportGenerator {
     public String getValue() {
         return toCurrency(-calcPMT());
     }
+    
+    /**
+     * Provides a text summary report of the loan. The report includes the amount purchased, down
+     * payment, interest rate (APR), compounding, loan duration, and periodic payment.
+     * 
+     * @return A String object containing a summary of the loan parameters
+     */
 
     @Override
     public String generateReport() {
