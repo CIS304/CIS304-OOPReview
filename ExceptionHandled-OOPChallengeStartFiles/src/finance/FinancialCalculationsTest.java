@@ -14,7 +14,9 @@ import finance.enums.CompoundingOption;
 public class FinancialCalculationsTest {
   
     public static void main(String[] args) {
+   //Exhibit C-1 Test Vector 
    // Test Case 1 
+   System.out.println("Exhibit C-1 Test Vector");
    System.out.println("Test Case 1");
    LoanPayment testcase1 = new LoanPayment(350000, 0, 0.10, CompoundingOption.ANNUAL, 15); 
    testcase1.getValue(); 
@@ -55,8 +57,29 @@ public class FinancialCalculationsTest {
         System.out.println(testcase6.generateReport());
         System.out.println("============================");
     
-    System.out.println("\n" + "\n" + "\n");
-    //Investment Test Vectors 
+    //====================================================================================================  
+        System.out.println("\n" + "\n" + "\n");
+   //Exhibit C-2 Test Vector 
+    System.out.println("Exhibit C-2 Test Vector");
+    
+    //Test Case 1 
+    System.out.println("Test Case 1");
+    LoanPayment testcase1B = new LoanPayment(350000, 50000, 0.10, CompoundingOption.ANNUAL, 15); 
+    testcase1B.getValue();
+        System.out.println(testcase1B.generateReport());
+        System.out.println("============================");
+    
+    //Test Case 2
+    System.out.println("Test Case 2");
+    LoanPayment testcase2B = new LoanPayment(350000, 50000, 0.10, CompoundingOption.MONTHLY, 15); 
+    testcase1B.getValue();
+        System.out.println(testcase2B.generateReport());
+        System.out.println("============================");
+        
+     //====================================================================================================      
+        System.out.println("\n" + "\n" + "\n");
+    //Exhibit C-3 Test Vector 
+    System.out.println("Exhibit C-3 Test Vector");
     System.out.println("Test Case 1");
     Investment testcaseI1 = new Investment(0, 100, 0.10, CompoundingOption.ANNUAL, 20); 
     testcaseI1.getValue(); 
@@ -92,6 +115,22 @@ public class FinancialCalculationsTest {
     testcaseI6.getValue(); 
         System.out.println(testcaseI6.generateReport());
         System.out.println("============================");
-    }
-
+    
+    //=========================================================================================================
+        System.out.println("\n" + "\n" + "\n");
+    //Exhibit C-4 Test Vector 
+    //Test Case 1
+    System.out.println("Exhibit C-4 Test Vector");
+    System.out.println("Test Case 1");
+    Investment testcase1D = new Investment(100, 100, 0.10, CompoundingOption.ANNUAL, 20); 
+    testcaseI1.getValue(); 
+        System.out.println(testcase1D.generateReport());
+        System.out.println("============================");
+    //Test Case 2    
+    System.out.println("Test Case 2");
+    Investment testcase2D = new Investment(100, 100, 0.10, CompoundingOption.MONTHLY, 20); 
+    testcaseI1.getValue(); 
+        System.out.println(testcase2D.generateReport());
+        System.out.println("============================");
+    }  
 }
