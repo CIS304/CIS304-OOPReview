@@ -24,6 +24,7 @@ public class LoanPayment extends TVMEngine implements ReportGenerator {
     private final double downPayment;
     private final double interestRate; 
     private final double loanDuration; 
+    private final double principalValue; 
      
     /**
      * The class constructor creates a LoanPayment object configured to
@@ -41,11 +42,12 @@ public class LoanPayment extends TVMEngine implements ReportGenerator {
                         CompoundingOption compounding,
                         double loanDuration) {
         super(loanDuration, interestRate, compounding, 0, 0, 0);
-        setPV(purchaseAmount - downPayment);
         this.purchaseAmount = purchaseAmount;
         this.downPayment = downPayment;
         this.interestRate = interestRate; 
         this.loanDuration = loanDuration; 
+        principalValue = purchaseAmount - downPayment; 
+        setPV(purchaseAmount - downPayment);
         
         
     }
