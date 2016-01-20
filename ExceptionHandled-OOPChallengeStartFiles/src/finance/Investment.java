@@ -55,7 +55,8 @@ public class Investment extends TVMEngine implements ReportGenerator{
     
     @Override
     public String getValue() {
-        return toCurrency(-calcFV()); 
+        String futurevalue = toCurrency(-calcFV()); 
+        return futurevalue; 
     }
     /** 
      * Provides a text summary report of the investment. The report includes the initial investment amount, 

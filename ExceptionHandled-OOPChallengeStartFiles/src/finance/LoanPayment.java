@@ -59,7 +59,8 @@ public class LoanPayment extends TVMEngine implements ReportGenerator {
      
     @Override
     public String getValue() {
-        return toCurrency(-calcPMT());
+        String payment = toCurrency(-calcPMT());
+        return payment;
     }
     
     /**
