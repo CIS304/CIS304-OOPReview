@@ -57,31 +57,37 @@ public class FinancialCalculationsTest {
     
     System.out.println("\n" + "\n" + "\n");
     //Investment Test Vectors 
+    System.out.println("Test Case 1");
     Investment testcaseI1 = new Investment(0, 100, 0.10, CompoundingOption.ANNUAL, 20); 
     testcaseI1.getValue(); 
         System.out.println(testcaseI1.generateReport());
         System.out.println("============================");
-        
+    
+        System.out.println("Test Case 2");
     Investment testcaseI2 = new Investment(100, 100, 0.10, CompoundingOption.ANNUAL, 20); 
     testcaseI2.getValue(); 
         System.out.println(testcaseI2.generateReport());
         System.out.println("============================");
-        
+    
+    System.out.println("Test Case 3");
     Investment testcaseI3 = new Investment(0, 100, 0.10, CompoundingOption.SEMIANNUAL, 20); 
     testcaseI3.getValue(); 
         System.out.println(testcaseI3.generateReport());
         System.out.println("============================");
-        
+    
+    System.out.println("Test Case 4");
     Investment testcaseI4 = new Investment(0, 100, 0.10, CompoundingOption.QUARTERLY, 20); 
     testcaseI4.getValue(); 
         System.out.println(testcaseI4.generateReport());
         System.out.println("============================");
-        
+    
+    System.out.println("Test Case 5");    
     Investment testcaseI5 = new Investment(0, 100, 0.10, CompoundingOption.MONTHLY, 20); 
     testcaseI5.getValue(); 
         System.out.println(testcaseI5.generateReport());
         System.out.println("============================");
-        
+    
+    System.out.println("Test Case 6");
     Investment testcaseI6 = new Investment(0, 100, 0.10, CompoundingOption.WEEKLY, 20); 
     testcaseI6.getValue(); 
         System.out.println(testcaseI6.generateReport());
