@@ -79,7 +79,7 @@ public class LoanPayment extends TVMEngine implements ReportGenerator {
                 + "\nPurchase Amount: " + toCurrency(purchaseAmount)
                 + "\nDown Payment: " + toCurrency(downPayment)
                 + "\nAmount Financed: " + toCurrency(principalValue)
-                + "\nAPR: " + (interestRate*100)+"%"
+                + "\nAPR: " + interestRate+"%"
                 + "\nCompounding: " + compoundingStr
                 + "\nLoan Duration (years): " + loanDuration
                 + "\nPayment " +"(" + compoundingStr +"):" + getValue();

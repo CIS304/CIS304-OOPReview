@@ -69,7 +69,7 @@ public class Investment extends TVMEngine implements ReportGenerator{
       return "Investment Value Summary"
               + "\nInitial Investment: " + toCurrency(initialInvestment)
               + "\nPeriodic Investment " + "(" + compoundingStr + "):"  + toCurrency(periodicPayment)
-              + "\nAnnual Return: " + (interestRate*100)+"%"
+              + "\nAnnual Return: " + interestRate+"%"
               + "\nInvestment Value after 20 Years: " + getValue();
     }
     
